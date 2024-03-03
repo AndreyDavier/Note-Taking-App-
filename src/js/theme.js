@@ -12,8 +12,10 @@ const toggleTheme = function () {
 /**
  * Initialize the theme
  */
-
 const storedTheme = localStorage.getItem("theme");
+
+
+
 const systemThemeIsDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 const initialTheme = storedTheme ?? (systemThemeIsDark ? "dark" : "light");
 
