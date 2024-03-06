@@ -2,8 +2,8 @@
 
 
 
-const addEventOnElement = function ($elements, eventType, callback) {
-    $elements.forEach($element => $element.addEventListener(eventType, callback));
+const addEventOnElement = function (elements, eventType, callback) {
+    elements.forEach(element => element.addEventListener(eventType, callback));
 }
 
 const getGreetingMsg = function (currentHour) {
@@ -18,8 +18,28 @@ const getGreetingMsg = function (currentHour) {
     return `Good ${greeting}`;
 }
 
+let lastActiveNavItem;
+
+const activeNotebook = function () {
+    lastActiveNavItem?.classList.remove("active");
+    this.classList.add("active");
+    lastActiveNavItem = this;
+}
+
+
+const makeElemEditable = function (element) {
+    element.setAttribute("contenteditable", true);
+    element.focus()
+}
+
+const generateID = function () {
+    return new Date().getTime.toString();
+}
 
 export {
     addEventOnElement,
-    getGreetingMsg
+    getGreetingMsg,
+    activeNotebook,
+    makeElemEditable,
+    generateID
 }

@@ -27,8 +27,8 @@ document.documentElement.setAttribute("data-theme", initialTheme);
  */
 
 window.addEventListener("DOMContentLoaded", function () {
-    const $themeBtn = document.querySelector("[data-theme-btn]");
-    if ($themeBtn) {
-        $themeBtn.addEventListener("click", toggleTheme);
+    const themeBtn = document.querySelector("[data-theme-btn]");
+    if (themeBtn) {
+        themeBtn.addEventListener("click", toggleTheme);
     }
 });

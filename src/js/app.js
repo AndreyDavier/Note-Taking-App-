@@ -1,20 +1,26 @@
 'use strict';
 
 
-import { addEventOnElement, getGreetingMsg } from "./utils.js";
+import {
+    addEventOnElement,
+    getGreetingMsg,
+    activeNotebook,
+    makeElemEditable
+} from "./utils.js";
 import { Tooltip } from "./components/Tooltip.js";
+import { db } from "./db.js";
 
 /**
  * Toogle sidebar in small screen
  */
 
-const $sidebar = document.querySelector("[data-sidebar]");
-const $sidebarTogglers = document.querySelectorAll("[data-sidebar-toggler]");
-const $overlay = document.querySelector("[data-sidebar-overlay]");
+const sidebar = document.querySelector("[data-sidebar]");
+const sidebarTogglers = document.querySelectorAll("[data-sidebar-toggler]");
+const overlay = document.querySelector("[data-sidebar-overlay]");
 
-addEventOnElement($sidebarTogglers, "click", function () {
-    $sidebar.classList.toggle("active");
-    $overlay.classList.toString("active");
+addEventOnElement(sidebarTogglers, "click", function () {
+    sidebar.classList.toggle("active");
+    overlay.classList.toString("active");
 });
 
 
@@ -47,3 +53,41 @@ $currentDataElem.textContent = new Date().toDateString().replace(``, ``);
 /**
  * Notebook crate field
  */
+
+const sidebarList = document.querySelector("[data-sidebar-list]");
+const addNotebookBtn = document.querySelector("[data-add-notebook]");
+
+const showNotebookField = function () {
+    const navItem = document.createElement("div");
+
+    navItem.classList.add("nav-item");
+
+    navItem.innerHTML = `
+        <span class="text text-label-large" data-notebook-field></span>
+
+        <div class="state-layer"></div>
+    `;
+
+    sidebarList.appendChild(navItem);
+
+    const navItemField = navItem.querySelector("[data-notebook-field]");
+
+    activeNotebook.call(navItem);
+
+    makeElemEditable(navItemField);
+
+    navItemField.addEventListener("keydown", createNotebook);
+}
+
+addNotebookBtn.addEventListener("click", showNotebookField);
+
+const createNotebook = function (e) {
+
+    if (e.key === "Enter") {
+
+        //Store new created notebook in database
+
+        db.post.notebook(this.textContent || "Untitled")
+    }
+
+}
