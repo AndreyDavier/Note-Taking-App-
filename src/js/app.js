@@ -9,6 +9,7 @@ import {
 } from "./utils.js";
 import { Tooltip } from "./components/Tooltip.js";
 import { db } from "./db.js";
+import { client } from "./client.js";
 
 /**
  * Toogle sidebar in small screen
@@ -87,7 +88,21 @@ const createNotebook = function (e) {
 
         //Store new created notebook in database
 
-        db.post.notebook(this.textContent || "Untitled")
+        const notebookData = db.post.notebook(this.textContent || "Untitled");
+        this.parentElement.remove();
+
+        //Render navItem
+
+        client.notebook.create(notebookData);
+
     }
 
 }
+
+const rednerExistedNoteBook = function () {
+    const notebookList = db.get.notebook();
+
+    client.notebook.read(notebookList);
+}
+
+rednerExistedNoteBook()

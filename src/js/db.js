@@ -47,6 +47,16 @@ export const db = {
 
             notekeeperDB.notebooks.push(notebookData);
             writeDB();
+
+            return notebookData;
+        }
+    },
+
+    get: {
+        notebook() {
+            readDB();
+
+            return notekeeperDB.notebooks
         }
     }
 };
