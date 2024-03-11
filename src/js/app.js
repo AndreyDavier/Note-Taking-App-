@@ -98,7 +98,9 @@ const createNotebook = function (e) {
     }
 
 }
-
+/**
+ * Renders the existing notebook list
+ */
 const rednerExistedNoteBook = function () {
     const notebookList = db.get.notebook();
 

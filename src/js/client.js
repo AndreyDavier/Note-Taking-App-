@@ -24,13 +24,25 @@ export const client = {
             notebookList.forEach((notebookData, index) => {
                 const navItem = NavItem(notebookData.id, notebookData.name);
 
-                if(index === 0){
+                if (index === 0) {
                     activeNotebook.call(navItem);
                     notePanelTitle.textContent = notebookData.name;
                 }
 
                 sidebarList.appendChild(navItem);
             });
+        },
+
+        update(notebookId, notebookData) {
+            console.log(notebookId);
+            const oldNotebook = document.querySelector(`[data-notebook="${notebookId}]"`);
+            console.log(oldNotebook);
+            const newNotebook = NavItem(notebookData.id, notebookData.name);
+
+            notePanelTitle.textContent = notebookData.name;
+            sidebarList.replaceChild(newNotebook, oldNotebook);
+
+            activeNotebook.call(newNotebook)
         }
     }
 

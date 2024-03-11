@@ -32,8 +32,12 @@ const makeElemEditable = function (element) {
     element.focus()
 }
 
-const generateID = function () {
+const generateId = function () {
     return new Date().getTime.toString();
+}
+
+const findNotebook = function(db, notebookId){
+    return db.notebooks.find(notebook => notebook.id === notebookId)
 }
 
 export {
@@ -41,5 +45,6 @@ export {
     getGreetingMsg,
     activeNotebook,
     makeElemEditable,
-    generateID
+    generateId,
+    findNotebook
 }
