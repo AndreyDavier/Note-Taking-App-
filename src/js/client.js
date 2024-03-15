@@ -34,9 +34,7 @@ export const client = {
         },
 
         update(notebookId, notebookData) {
-            console.log(notebookId);
-            const oldNotebook = document.querySelector(`[data-notebook="${notebookId}]"`);
-            console.log(oldNotebook);
+            const oldNotebook = document.querySelector(`[data-notebook="${notebookId}"]`);
             const newNotebook = NavItem(notebookData.id, notebookData.name);
 
             notePanelTitle.textContent = notebookData.name;

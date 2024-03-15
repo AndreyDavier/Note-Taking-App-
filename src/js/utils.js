@@ -33,10 +33,12 @@ const makeElemEditable = function (element) {
 }
 
 const generateId = function () {
-    return new Date().getTime.toString();
+
+    return new Date().getTime().toString()
 }
 
-const findNotebook = function(db, notebookId){
+
+const findNotebook = function (db, notebookId) {
     return db.notebooks.find(notebook => notebook.id === notebookId)
 }
 

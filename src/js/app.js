@@ -89,10 +89,10 @@ const createNotebook = function (e) {
         //Store new created notebook in database
 
         const notebookData = db.post.notebook(this.textContent || "Untitled");
+     
         this.parentElement.remove();
 
         //Render navItem
-
         client.notebook.create(notebookData);
 
     }

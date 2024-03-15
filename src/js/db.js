@@ -2,7 +2,6 @@
 
 
 import { generateId, findNotebook } from "./utils.js";
-
 // DB Object
 
 let notekeeperDB = {};
@@ -63,7 +62,6 @@ export const db = {
     update: {
         notebook(notebookId, name) {
             readDB();
-
             const notebook = findNotebook(notekeeperDB, notebookId);
             notebook.name = name;
             writeDB();
