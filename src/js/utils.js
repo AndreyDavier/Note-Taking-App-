@@ -42,11 +42,16 @@ const findNotebook = function (db, notebookId) {
     return db.notebooks.find(notebook => notebook.id === notebookId)
 }
 
+const findNotebookIndex = function (db, notebookId) {
+    return db.notebooks.findIndex(item => item.id === notebookId)
+}
+
 export {
     addEventOnElement,
     getGreetingMsg,
     activeNotebook,
     makeElemEditable,
     generateId,
-    findNotebook
+    findNotebook,
+    findNotebookIndex
 }

@@ -41,6 +41,14 @@ export const client = {
             sidebarList.replaceChild(newNotebook, oldNotebook);
 
             activeNotebook.call(newNotebook)
+        },
+
+        delete(notebookId) {
+            const deletedNotebook = document.querySelector(`[data-notebook="${notebookId}"]`);
+
+            const activeNavitem = deletedNotebook.nextElementSibling ?? deletedNotebook.previousElementSibling;
+
+            deletedNotebook.remove();
         }
     }
 
