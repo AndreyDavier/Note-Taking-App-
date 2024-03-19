@@ -9,7 +9,9 @@ const sidebarList = document.querySelector("[data-sidebar-list]");
 
 const notePanelTitle = document.querySelector("[data-note-panel-title]");
 
-const notePanel = document.querySelector("[data-note-panel]")
+const notePanel = document.querySelector("[data-note-panel]");
+
+const noteCreateBtns = document.querySelectorAll("[data-note-create-btn]");
 
 const emptyNotesTemplate = `
     <div class="empty-notes">
@@ -21,6 +23,11 @@ const emptyNotesTemplate = `
     </div>
 `;
 
+const disableNoteCreateBtns = function (isThereAnyNotebooks) {
+    noteCreateBtns.forEach(item => {
+        item[isThereAnyNotebooks ? "removeAttribute" : "setAttribute"]("disabled", "");
+    })
+}
 
 export const client = {
 
@@ -31,9 +38,11 @@ export const client = {
             activeNotebook.call(navItem);
             notePanelTitle.textContent = notebookData.name;
             notePanel.innerHTML = emptyNotesTemplate;
+            disableNoteCreateBtns(true)
         },
 
         read(notebookList) {
+            disableNoteCreateBtns(notebookList.length)
             notebookList.forEach((notebookData, index) => {
                 const navItem = NavItem(notebookData.id, notebookData.name);
 
@@ -66,6 +75,7 @@ export const client = {
             } else {
                 notePanelTitle.innerHTML = "";
                 notePanel.innerHTML = "";
+                disableNoteCreateBtns(false)
             }
 
             deletedNotebook.remove();
@@ -74,6 +84,12 @@ export const client = {
 
     note: {
         create(noteData) {
+            //Clear "emptyNotesTemlate"
+
+            if (!notePanel.querySelector("[data-note]")) {
+                notePanel.innerHTML = '';
+            }
+
             // Append card in notePanel
             const card = Card(noteData);
 
@@ -93,6 +109,20 @@ export const client = {
                 notePanel.innerHTML = emptyNotesTemplate;
             }
 
+        },
+
+        update(noteId, noteData) {
+            const oldCard = document.querySelector(`[data-note="${noteId}"]`);
+
+            const newCard = Card(noteData);
+            notePanel.replaceChild(newCard, oldCard)
+        },
+
+        delete(noteId, isNoteExists) {
+            document.querySelector(`[data-note="${noteId}"]`).remove();
+            if (!isNoteExists) {
+                notePanel.innerHTML = emptyNotesTemplate;
+            }
         }
     }
 

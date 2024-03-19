@@ -58,6 +58,20 @@ const getRelativeTime = function (milliseconds) {
     return minute < 1 ? "Just now" : minute < 60 ? `${minute} min ago` : hour < 24 ? `${hour} hour ago` : `${day} day ago`
 }
 
+const findNote = (db, noteId) => {
+    let note;
+    for (const notebook of db.notebooks) {
+        note = notebook.notes.find(note => note.id === noteId);
+        if (note) break;
+    }
+
+    return note;
+}
+
+const findNoteIndex = function (notebook, noteId) {
+    return notebook.notes.findIndex(note => note.id === note)
+}
+
 
 export {
     addEventOnElement,
@@ -67,5 +81,7 @@ export {
     generateId,
     findNotebook,
     findNotebookIndex,
-    getRelativeTime
+    getRelativeTime,
+    findNote,
+    findNoteIndex
 }
