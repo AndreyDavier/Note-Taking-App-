@@ -10,6 +10,7 @@ import {
 import { Tooltip } from "./components/Tooltip.js";
 import { db } from "./db.js";
 import { client } from "./client.js";
+import { NoteModal } from "./components/Modal.js";
 
 /**
  * Toogle sidebar in small screen
@@ -89,7 +90,7 @@ const createNotebook = function (e) {
         //Store new created notebook in database
 
         const notebookData = db.post.notebook(this.textContent || "Untitled");
-     
+
         this.parentElement.remove();
 
         //Render navItem
@@ -101,10 +102,47 @@ const createNotebook = function (e) {
 /**
  * Renders the existing notebook list
  */
-const rednerExistedNoteBook = function () {
+const renderExistedNoteBook = function () {
     const notebookList = db.get.notebook();
 
     client.notebook.read(notebookList);
 }
 
-rednerExistedNoteBook()
+renderExistedNoteBook()
+
+
+/**
+ * Create new note
+ */
+
+const noteCreateBtns = document.querySelectorAll("[data-note-create-btn]");
+
+addEventOnElement(noteCreateBtns, "click", function () {
+    //Create and open a new modal
+
+    const modal = NoteModal();
+
+    modal.open();
+
+    modal.onSubmit(noteObj => {
+        const activeNotebookId = document.querySelector("[data-notebook].active").dataset.notebook;
+        const noteData = db.post.note(activeNotebookId, noteObj);
+
+        client.note.create(noteData);
+        modal.close()
+    })
+});
+
+const renderExistedNote = function () {
+    const activeNotebookId = document.querySelector("[data-notebook].active")?.dataset.notebook;
+
+    if (activeNotebookId) {
+        const noteList = db.get.note(activeNotebookId);
+
+        //Display existing note
+
+        client.note.read(noteList);
+    }
+}
+
+renderExistedNote()

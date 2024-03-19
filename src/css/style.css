@@ -621,7 +621,7 @@ body {
  */
 .modal {
   position: fixed;
-  top: 70%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 560px;
@@ -915,6 +915,7 @@ body {
   align-content: flex-start;
   align-items: stretch;
   gap: var(--spacing-2);
+  flex-grow: 1;
 }
 
 .main .fab {

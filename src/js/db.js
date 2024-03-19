@@ -48,6 +48,25 @@ export const db = {
             writeDB();
 
             return notebookData;
+        },
+
+        note(notebookId, object) {
+            readDB();
+
+            const notebook = findNotebook(notekeeperDB, notebookId);
+            const noteData = {
+                id: generateId(),
+                notebookId,
+                ...object,
+                postedOn: new Date().getTime()
+
+            }
+
+
+            notebook.notes.unshift(noteData);
+            writeDB();
+
+            return noteData
         }
     },
 
@@ -56,8 +75,17 @@ export const db = {
             readDB();
 
             return notekeeperDB.notebooks
+        },
+
+        note(notebookId) {
+            readDB();
+
+            const notebook = findNotebook(notekeeperDB, notebookId);
+
+            return notebook.notes;
         }
     },
+
 
     update: {
         notebook(notebookId, name) {
