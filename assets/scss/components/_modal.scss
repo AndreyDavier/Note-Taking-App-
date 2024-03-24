@@ -1,0 +1,103 @@
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 560px;
+    width: calc(100% - $spacing-8);
+    background-color: var(--surface-container-highest);
+    border-radius: $radius-large;
+    padding: $spacing-6;
+    box-shadow: $shadow-3;
+    z-index: 8;
+    animation: modal-open $tr-duration-medium $tr-easing-emphasized forwards;
+
+    .icon-btn {
+        position: absolute;
+        top: $spacing-4;
+        right: $spacing-5;
+    }
+}
+
+.modal-title {
+    padding-inline-end: $spacing-10;
+    max-height: 48px;
+    color: var(--on-surface);
+    margin-block-end: $spacing-4;
+    overflow: hidden;
+}
+
+.modal-text {
+    max-height: calc(100vh - 200px);
+    min-height: 240px;
+    color: var(--on-surface-variant);
+    overflow: auto;
+    margin-block-end: $spacing-4;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: $shadow-2;
+    padding-block-start: $shadow-2;
+
+    .time {
+        flex-grow: 1;
+        color: var(--on-surface-variant);
+    }
+}
+
+// .modal-footer .time {
+//     flex-grow: 1;
+//     color: var(--on-surface-variant);
+// }
+
+@keyframes modal-open {
+    0% {
+        transform: translate(-50%, calc(-50% + $spacing-5));
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+        visibility: visible
+    }
+}
+
+// .modal .icon-btn {
+//     position: absolute;
+//     top: var(--spacing-4);
+//     right: var(--spacing-5);
+// }
+
+// .modal-title {
+//     padding-inline-end: var(--spacing-10);
+//     max-height: 48px;
+//     color: var(--on-surface);
+//     margin-block-end: var(--spacing-4);
+//     overflow: hidden;
+// }
+
+// .modal-text {
+//     max-height: calc(100vh - 200px);
+//     min-height: 240px;
+//     color: var(--on-surface-variant);
+//     overflow: auto;
+//     margin-block-end: var(--spacing-4);
+// }
+
+// .modal-footer {
+//     display: flex;
+//     justify-content: flex-end;
+//     align-items: center;
+//     gap: var(--shadow-2);
+//     padding-block-start: var(--shadow-2);
+// }
+
+// .modal-footer .time {
+//     flex-grow: 1;
+//     color: var(--on-surface-variant);
+// }

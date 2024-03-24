@@ -1,0 +1,89 @@
+@import"../mixins/mixin";
+
+.text-display-large {
+  @include text-title-2($fs-display-large,
+    $lh-display-large,
+    $fw-regular,
+    $ls-n-025 )
+}
+
+.text-display-medium {
+  @include text-title($fs-display-medium,
+    $lh-display-medium,
+    $fw-regular)
+}
+
+.text-display-small {
+  @include text-title($fs-display-small,
+    $lh-display-small, $fw-regular)
+}
+
+.text-headline-large {
+  @include text-title($fs-headline-large,
+    $lh-headline-large, $fw-regular)
+}
+
+.text-headline-medium {
+  @include text-title($fs-headline-medium,
+    $lh-headline-medium, $fw-regular)
+}
+
+.text-headline-small {
+  @include text-title($fs-headline-small,
+    $lh-headline-small, $fw-regular)
+}
+
+.text-title-large {
+  @include text-title($fs-title-large,
+    $lh-title-large, $fw-regular)
+}
+
+.text-title-medium {
+  @include text-title-2($fs-title-medium,
+    $lh-title-medium,
+    $fw-medium, $ls-p-015)
+}
+
+.text-title-small {
+  @include text-title-2($fs-title-small,
+    $lh-title-small,
+    $fw-medium, $ls-p-010)
+}
+
+.text-body-large {
+  @include text-title-2($fs-body-large,
+    $lh-body-large,
+    $fw-regular, $ls-p-025)
+}
+
+.text-body-medium {
+  @include text-title-2($fs-body-medium,
+    $lh-body-medium,
+    $fw-regular, $ls-p-025)
+}
+
+.text-body-small {
+  @include text-title-2($fs-body-small,
+    $lh-body-small,
+    $fw-regular, $ls-p-040)
+}
+
+.text-label-large {
+
+  outline: none;
+  @include text-title-2($fs-label-large,
+    $lh-label-large,
+    $fw-medium, $ls-p-010)
+}
+
+.text-label-medium {
+  @include text-title-2($fs-label-medium,
+    $lh-label-medium,
+    $fw-medium, $ls-p-050)
+}
+
+.text-label-small {
+  @include text-title-2($fs-label-small,
+    $lh-label-small,
+    $fw-medium, $ls-p-050)
+}

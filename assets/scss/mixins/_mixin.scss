@@ -1,0 +1,12 @@
+@mixin text-title($font-size, $line-height, $font-weight) {
+    font-size: $font-size;
+    line-height: $line-height;
+    font-weight: $font-weight;
+}
+
+@mixin text-title-2($font-size, $line-height, $font-weight, $letter-sp) {
+    font-size: $font-size;
+    line-height: $line-height;
+    font-weight: $font-weight;
+    letter-spacing: $letter-sp;
+}

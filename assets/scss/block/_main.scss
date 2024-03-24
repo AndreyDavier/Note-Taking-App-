@@ -1,0 +1,133 @@
+@import "../variables/variables";
+
+.main {
+    padding-inline: $spacing-4;
+    padding-block-end: $spacing-4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    .header {
+        display: flex;
+        align-items: flex-start;
+        gap: $spacing-2;
+        padding-block: $spacing-4;
+
+        .wrapper {
+            flex-grow: 1;
+        }
+
+        &>.title {
+            margin-block-end: $spacing-1;
+        }
+
+        .text {
+            color: var(--on-surface-variant);
+        }
+
+        .theme-btn {
+            transition: transform $tr-duration-medium $tr-easing-emphasized;
+        }
+
+        .title {
+            margin-block: $spacing-3;
+        }
+    }
+
+    .note-list {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        align-content: flex-start;
+        align-items: stretch;
+        gap: $spacing-2;
+    }
+
+    .fab {
+        position: fixed;
+        bottom: $spacing-4;
+        right: $spacing-4;
+        z-index: 2;
+    }
+}
+
+.empty-notes {
+    position: absolute;
+    top: 250px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: $spacing-4;
+    color: var(--on-surface-variant);
+    -webkit-user-select: none;
+    user-select: none;
+
+    .material-symbols-rounded {
+        font-size: 6.8rem;
+        opacity: 0.25;
+        margin-block-end: $spacing-4;
+        margin-inline: auto;
+    }
+}
+
+
+// .main .header .wrapper {
+//     flex-grow: 1;
+// }
+
+// .main .header .title {
+//     margin-block-end: var(--spacing-1);
+// }
+
+// .main .header .text {
+//     color: var(--on-surface-variant);
+// }
+
+// .theme-btn {
+//     transition: transform var(--tr-duration-medium) var(--tr-easing-emphasized);
+// }
+
+html[data-theme="dark"] .theme-btn .dark-icon,
+.theme-btn .light-icon {
+    display: none;
+}
+
+html[data-theme="dark"] .theme-btn .light-icon {
+    display: block;
+}
+
+html[data-theme="dark"] .theme-btn {
+    transform: rotate(-90deg);
+}
+
+// .main>.title {
+//     margin-block: var(--spacing-3);
+// }
+
+// .note-list {
+//     position: relative;
+//     display: grid;
+//     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+//     align-content: flex-start;
+//     align-items: stretch;
+//     gap: var(--spacing-2);
+// }
+
+// .main .fab {
+//     position: fixed;
+//     bottom: var(--spacing-4);
+//     right: var(--spacing-4);
+//     z-index: 2;
+// }
+
+
+
+// .empty-notes .material-symbols-rounded {
+//     font-size: 6.8rem;
+//     opacity: 0.25;
+//     margin-block-end: var(--spacing-4);
+//     margin-inline: auto;
+// }

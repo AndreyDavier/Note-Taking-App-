@@ -1,0 +1,90 @@
+.card {
+    background-color: var(--surface);
+    padding: $spacing-4;
+    border: 1px solid var(--outline-variant);
+    border-radius: $radius-large;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    --state-layer-bg: var(--on-surface);
+    transition: border-color $tr-duration-short $tr-easing-linear;
+    margin-top: 20px;
+
+    &:where(:hover, :focus-visible) {
+        border-color: var(--outline);
+    }
+
+    .card-title {
+        color: var(--on-surface);
+    }
+
+    .card-text {
+        color: var(--on-surface-variant);
+        margin-block: $spacing-4;
+        text-wrap: balance;
+        line-clamp: 4;
+        display: --webkit-box;
+        --webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-block-start: auto;
+    }
+
+    .card-time {
+        color: var(--on-surface-variant);
+    }
+
+    .icon-btn {
+        opacity: 0;
+        transition: opacity $tr-duration-short $tr-easing-linear;
+    }
+
+    &:where(:hover, :focus-visible) .icon-btn {
+        opacity: 1;
+    }
+}
+
+// .card:where(:hover, :focus-visible) {
+//     border-color: var(--outline);
+// }
+
+// .card .card-title {
+//     color: var(--on-surface);
+// }
+
+// .card .card-text {
+//     color: var(--on-surface-variant);
+//     margin-block: $spacing-4;
+//     text-wrap: balance;
+//     line-clamp: 4;
+//     display: -webkit-box;
+//     --webkit-box-orient: vertical;
+//     text-overflow: ellipsis;
+//     overflow: hidden;
+// }
+
+// .card .wrapper {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     margin-block-start: auto;
+// }
+
+// .card .card-time {
+//     color: var(--on-surface-variant);
+// }
+
+// .card .icon-btn {
+//     opacity: 0;
+//     transition: opacity var(--tr-duration-short) var(--tr-easing-linear);
+// }
+
+// .card:where(:hover, :focus-visible) .icon-btn {
+//     opacity: 1;
+// }

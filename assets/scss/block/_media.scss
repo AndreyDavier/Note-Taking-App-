@@ -1,0 +1,102 @@
+/**
+* responsive for larger than 768px screen
+*/
+@import "../variables/variables";
+
+@media (min-width:768px) {
+
+    /**
+    * MAIN
+    */
+
+    .main {
+        padding-inline: $spacing-6;
+    }
+
+}
+
+
+/**
+  * responsive for larger than 992px screen
+  */
+
+@media (min-width:992px) {
+
+
+    /**
+    * BASE
+    */
+
+    body {
+        padding-inline-start: $sidebar-width;
+    }
+
+    /**
+      * REUSED STYLE
+    */
+
+
+    .overlay:not(.modal-overlay) {
+        display: none;
+    }
+
+    /**
+      * SIDEBAR
+    */
+
+
+    .sidebar {
+        visibility: visible;
+        left: 0;
+        height: 100vh;
+        grid-template-rows: repeat(3, max-content) 1fr max-content;
+        box-shadow: none;
+        border-radius: 0;
+
+        &.acvive {
+            transform: unset;
+        }
+    }
+
+    // .sidebar.acvive {
+    //     transform: unset;
+    // }
+
+    .sidebar .fab {
+        display: flex;
+    }
+
+    /**
+    * MAIN
+    */
+
+    .main {
+        padding-inline: $spacing-10;
+    }
+
+    .menu-btn,
+    main .fab {
+        display: none;
+    }
+
+
+}
+
+/**
+  * responsive for larger than 1400px screen
+  */
+
+@media (min-width:1400px) {
+
+    /**
+    * MAIN
+    */
+
+    .main {
+        max-width: 1480px;
+        width: 100%;
+        margin-inline: auto;
+    }
+
+
+}

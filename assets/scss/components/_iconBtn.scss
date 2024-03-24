@@ -1,0 +1,36 @@
+.icon-btn {
+    display: grid;
+    place-items: center;
+    color: var(--on-surface-variant);
+    border-radius: $radius-full;
+    --state-layer-bg: var(--on-surface-variant);
+
+    &.large {
+        width: 40px;
+        height: 40px;
+    }
+
+    &.small {
+        width: 28px;
+        height: 28px;
+
+        .material-symbols-rounded {
+            font-size: 1.8rem;
+        }
+    }
+
+}
+
+// .icon-btn.large {
+//     width: 40px;
+//     height: 40px;
+// }
+
+// .icon-btn.small {
+//     width: 28px;
+//     height: 28px;
+// }
+
+// .icon-btn.small .material-symbols-rounded {
+//     font-size: 1.8rem;
+// }
